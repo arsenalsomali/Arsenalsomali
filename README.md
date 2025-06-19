@@ -1,58 +1,42 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Mic, Play, UploadCloud } from "lucide-react";
+import { Mic, PlayCircle, UploadCloud } from "lucide-react";
 
-export default function PremierLeaguePodcast() {
+export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white font-sans px-6 py-10">
-      <header className="text-center mb-10">
-        <h1 className="text-5xl font-bold uppercase tracking-wide text-red-600">
-          Premier League Cast
-        </h1>
-        <p className="mt-4 text-lg text-gray-300">
-          Podcast Every Premier League Game – 2025/2026 Season
-        </p>
-      </header>
+    <main className="min-h-screen bg-black text-white p-6 font-sans">
+      <section className="text-center mb-10">
+        <h1 className="text-5xl font-bold mb-2 text-yellow-400">Premier League Cast 2025/2026</h1>
+        <p className="text-lg text-gray-300">Live Podcast | Matchday Reactions | Bold Opinions</p>
+      </section>
 
-      <section className="grid md:grid-cols-2 gap-8">
-        <Card className="bg-gray-900 text-white shadow-lg">
-          <CardContent className="p-6">
-            <h2 className="text-2xl font-bold mb-4">🎙️ Latest Episodes</h2>
-            <div className="space-y-4">
-              <div className="bg-gray-800 p-4 rounded-lg flex items-center justify-between">
-                <span>Man City vs Arsenal - Matchday 1</span>
-                <Button className="bg-red-600 hover:bg-red-700">
-                  <Play className="mr-2 h-4 w-4" /> Play
-                </Button>
-              </div>
-              <div className="bg-gray-800 p-4 rounded-lg flex items-center justify-between">
-                <span>Man Utd vs Chelsea - Matchday 1</span>
-                <Button className="bg-red-600 hover:bg-red-700">
-                  <Play className="mr-2 h-4 w-4" /> Play
-                </Button>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-gray-900 text-white shadow-lg">
-          <CardContent className="p-6">
-            <h2 className="text-2xl font-bold mb-4">🔴 Upload New Episode</h2>
-            <div className="space-y-4">
-              <Input type="text" placeholder="Episode Title" className="bg-gray-800 text-white" />
-              <Input type="file" className="bg-gray-800 text-white" />
-              <Button className="bg-green-600 hover:bg-green-700 w-full">
-                <UploadCloud className="mr-2 h-4 w-4" /> Upload
+      <section className="grid gap-6 md:grid-cols-3">
+        {[1, 2, 3].map((ep) => (
+          <Card key={ep} className="bg-zinc-900 border border-yellow-500">
+            <CardContent className="p-5">
+              <h2 className="text-2xl font-semibold text-yellow-300 mb-2">Episode {ep}</h2>
+              <p className="text-gray-400 text-sm mb-4">Premier League Matchday {ep} Analysis & Commentary</p>
+              <Button className="bg-yellow-500 text-black w-full">
+                <PlayCircle className="mr-2" size={20} /> Listen Now
               </Button>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        ))}
+      </section>
+
+      <section className="mt-12 text-center">
+        <h2 className="text-3xl font-bold mb-4 text-yellow-400">Upload New Episode</h2>
+        <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+          <input type="file" className="file:bg-yellow-400 file:text-black file:px-4 file:py-2 file:rounded-md" />
+          <Button className="bg-yellow-500 text-black">
+            <UploadCloud className="mr-2" size={20} /> Upload
+          </Button>
+        </div>
       </section>
 
       <footer className="mt-16 text-center text-gray-500 text-sm">
-        &copy; {new Date().getFullYear()} Premier League Cast. All rights reserved.
+        &copy; 2025 Premier League Cast. Built by Abdiwahab.
       </footer>
     </main>
   );
